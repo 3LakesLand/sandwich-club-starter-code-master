@@ -76,4 +76,74 @@
         <item name="android:textSize">@dimen/origin_label_tv_textSize</item>
     </style>
 
+    <style name="guideline">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+
+    <style name="guideline2">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+
+    <style name="origin_tv">
+        <item name="android:layout_width">@dimen/origin_tv_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/origin_tv_marginStart</item>
+        <item name="android:layout_marginTop">@dimen/origin_tv_marginTop</item>
+        <item name="android:layout_marginEnd">@dimen/origin_tv_marginEnd</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/origin_tv_textSize</item>
+    </style>
+
+    <style name="ingredients_label">
+        <item name="android:layout_width">@dimen/ingredients_label_tv_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/ingredients_label_tv_marginStart</item>
+        <item name="android:layout_marginTop">@dimen/ingredients_label_tv_marginTop</item>
+        <item name="android:layout_marginEnd">@dimen/ingredients_label_tv_marginEnd</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/ingredients_label_tv_textSize</item>
+    </style>
+
+    <style name="ingredients_tv">
+        <item name="android:layout_width">@dimen/ingredients_tv_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/ingredients_tv_marginStart</item>
+        <item name="android:layout_marginTop">@dimen/ingredients_tv_marginTop</item>
+        <item name="android:layout_marginEnd">@dimen/ingredients_tv_marginEnd</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/ingredients_tv_textSize</item>
+    </style>
+
+    <style name="description_label">
+        <item name="android:layout_width">@dimen/description_label_tv_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/description_label_tv_marginStart</item>
+        <item name="android:layout_marginTop">@dimen/description_label_tv_marginTop</item>
+        <item name="android:layout_marginEnd">@dimen/description_label_tv_marginEnd</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/description_label_tv_textSize</item>
+    </style>
+
+    <style name="description_tv">
+        <item name="android:layout_width">@dimen/description_tv_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/description_tv_marginStart</item>
+        <item name="android:layout_marginTop">@dimen/description_tv_marginTop</item>
+        <item name="android:layout_marginEnd">@dimen/description_tv_marginEnd</item>
+        <item name="android:layout_marginBottom">@dimen/description_tv_marginBottom</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/description_tv_textSize</item>
+    </style>
+
 </resources>

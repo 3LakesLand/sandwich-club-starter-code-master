@@ -15,6 +15,9 @@
     <string name="no_picture_is_available">No picture is available</string>
     <string name="sandwich_picture">sandwich picture</string>
     <string name="also_known_tv_toolsText">croque-monsieur (French)</string>
+    <string name="ingredients_tv_toolsText">Sliced bread, Cheese, Ham</string>
+    <string name="origin_tv_toolsText">Worldwide</string>
+    <string name="description_tv_toolsText">A ham and cheese sandwich is a common type of sandwich.</string>
 
     <string-array name="sandwich_names">
         <item>Ham and cheese sandwich</item>

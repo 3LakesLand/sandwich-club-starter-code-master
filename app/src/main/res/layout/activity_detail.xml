@@ -12,20 +12,13 @@
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            app:layout_constraintGuide_begin="8dp" />
+            app:layout_constraintGuide_begin="@dimen/guideline_contraintGuide_begin"
+            style="@style/guideline" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            app:layout_constraintGuide_begin="152dp" />
-
+            app:layout_constraintGuide_begin="@dimen/guideline2_contraintGuide_begin"
+            style="@style/guideline2" />
 
         <ImageView
             android:id="@+id/image_iv"
@@ -76,81 +69,44 @@
 
         <TextView
             android:id="@+id/origin_tv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="sans-serif"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/also_known_tv"
-            tools:text="Worldwide" />
+            tools:text="@string/origin_tv_toolsText"
+            style="@style/origin_tv" />
 
         <TextView
             android:id="@+id/ingredients_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="sans-serif"
             android:text="@string/detail_ingredients_label"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/origin_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/origin_tv"
+            style="@style/ingredients_label" />
 
         <TextView
             android:id="@+id/ingredients_tv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="sans-serif"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/origin_tv"
-            tools:text="Sliced bread, Cheese, Ham" />
+            tools:text="@string/ingredients_tv_toolsText"
+            style="@style/ingredients_tv" />
 
         <TextView
             android:id="@+id/description_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="sans-serif"
             android:text="@string/detail_description_label"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/ingredients_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/ingredients_tv"
+            style="@style/description_label" />
 
         <TextView
             android:id="@+id/description_tv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="sans-serif"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/ingredients_tv"
-            tools:text="A ham and cheese sandwich is a common type of sandwich." />
-
+            tools:text="@string/description_tv_toolsText"
+            style="@style/description_tv" />
 
     </android.support.constraint.ConstraintLayout>
 
