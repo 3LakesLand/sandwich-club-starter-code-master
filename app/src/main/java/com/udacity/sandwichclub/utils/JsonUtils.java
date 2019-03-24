@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * The Class allows the parsing of a JSON Sandwich String and the Conversion to the Class Sandwich.
  */
 public class JsonUtils {
     private static final String ERROR_IN_PARSING_THE_SANDWICH_JSON_STRING = "Error in Parsing the Sandwich JSON String";
@@ -25,13 +25,16 @@ public class JsonUtils {
     private static final int START_INDEX = 0;
     private static final int ZERO = 0;
     private static final String NAME = "name";
-    private static String TAG = JsonUtils.class.getSimpleName();
-    private static String NO_INFORMATION_AVAILABLE = "No Information available";
+    private static final String TAG = JsonUtils.class.getSimpleName();
+    private static final String NO_INFORMATION_AVAILABLE = "No Information available";
 
     /**
+     * The Method retrieves the required Information from the JSON Structure and inserts it
+     * into a Sandwich object. If information is missing, the String "No Information available"
+     * will be used.
      *
-     * @param sandwichJsonString
-     * @return
+     * @param sandwichJsonString sandwich information into a JSON-Structure
+     * @return a Sandwich object or an error from parsing
      */
     public static Sandwich parseSandwichJson(String sandwichJsonString) {
         if (sandwichJsonString != null) {
@@ -62,10 +65,11 @@ public class JsonUtils {
     }
 
     /**
+     * Convenience method to convert a JSONArray into a List of String(s).
      *
-     * @param jsonArray
-     * @return
-     * @throws JSONException
+     * @param jsonArray String(s) into a JSON-Array
+     * @return List of String(s)
+     * @throws JSONException when the array has no String on a specific index
      */
     private static List<String> convertInStringList(JSONArray jsonArray) throws JSONException {
         List<String> resultList = new ArrayList<>();
