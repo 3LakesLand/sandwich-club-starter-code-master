@@ -27,6 +27,7 @@ public class JsonUtils {
     private static final String NAME = "name";
     private static final String TAG = JsonUtils.class.getSimpleName();
     private static final String NO_INFORMATION_AVAILABLE = "No Information available";
+    private static final String PLACE_OF_ORIGIN = "placeOfOrigin";
 
     /**
      * The Method retrieves the required Information from the JSON Structure and inserts it
@@ -47,9 +48,15 @@ public class JsonUtils {
                 JSONArray alsoKnownJsonArray = mainJsonObj.optJSONArray(ALSO_KNOWN_AS);
                 List<String> alsoKnownAs = convertInStringList(alsoKnownJsonArray);
 
-                String placeOfOrigin = sandwichJsonObj.optString(SANDWICH, NO_INFORMATION_AVAILABLE);
+                String placeOfOrigin = sandwichJsonObj.optString(PLACE_OF_ORIGIN, NO_INFORMATION_AVAILABLE);
+                if (placeOfOrigin.isEmpty()) {
+                    placeOfOrigin = NO_INFORMATION_AVAILABLE;
+                }
 
                 String description = sandwichJsonObj.optString(DESCRIPTION, NO_INFORMATION_AVAILABLE);
+                if (description.isEmpty()) {
+                    description = NO_INFORMATION_AVAILABLE;
+                }
 
                 String image = sandwichJsonObj.optString(IMAGE);
 
