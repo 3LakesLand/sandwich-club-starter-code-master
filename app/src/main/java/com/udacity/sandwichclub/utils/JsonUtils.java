@@ -9,35 +9,71 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
+/**
+ *
+ */
 public class JsonUtils {
-    private final static String TAG = JsonUtils.class.getSimpleName();
+    private static final String ERROR_IN_PARSING_THE_SANDWICH_JSON_STRING = "Error in Parsing the Sandwich JSON String";
+    private static final String MAIN_NAME = "mainName";
+    private static final String ALSO_KNOWN_AS = "alsoKnownAs";
+    private static final String SANDWICH = "sandwich";
+    private static final String DESCRIPTION = "description";
+    private static final String IMAGE = "image";
+    private static final String INGREDIENTS = "ingredients";
+    private static final int START_INDEX = 0;
+    private static final int ZERO = 0;
+    private static final String NAME = "name";
+    private static String TAG = JsonUtils.class.getSimpleName();
+    private static String NO_INFORMATION_AVAILABLE = "No Information available";
 
-    public static Sandwich parseSandwichJson(String sandwichJson) {
-        if (sandwichJson != null) {
+    /**
+     *
+     * @param sandwichJsonString
+     * @return
+     */
+    public static Sandwich parseSandwichJson(String sandwichJsonString) {
+        if (sandwichJsonString != null) {
             try {
-                JSONObject sandwich = new JSONObject(sandwichJson);
-                JSONObject main = sandwich.getJSONObject("name");
-                String mainName = main.optString("mainName");
-                JSONArray alsoKnownAs = main.getJSONArray("alsoKnownAs");
-                ArrayList<String> alsoKnownAsList = new ArrayList<>();
-                for (int i = 0; i < alsoKnownAs.length(); i++) {
-                    alsoKnownAsList.add(alsoKnownAs.getString(i));
-                }
-                String placeOfOrigin = sandwich.optString("sandwich");
-                String description = sandwich.optString("description");
-                String image = sandwich.optString("image");
-                JSONArray ingredients = sandwich.getJSONArray("ingredients");
-                ArrayList<String> ingredientsList = new ArrayList<>();
-                for (int i = 0; i < ingredients.length(); i++) {
-                    ingredientsList.add(ingredients.getString(i));
-                }
-                return new Sandwich(mainName, alsoKnownAsList, placeOfOrigin, description, image,
-                        ingredientsList);
+                JSONObject sandwichJsonObj = new JSONObject(sandwichJsonString);
+                JSONObject mainJsonObj = sandwichJsonObj.getJSONObject(NAME);
+
+                String mainName = mainJsonObj.optString(MAIN_NAME);
+
+                JSONArray alsoKnownJsonArray = mainJsonObj.optJSONArray(ALSO_KNOWN_AS);
+                List<String> alsoKnownAs = convertInStringList(alsoKnownJsonArray);
+
+                String placeOfOrigin = sandwichJsonObj.optString(SANDWICH, NO_INFORMATION_AVAILABLE);
+
+                String description = sandwichJsonObj.optString(DESCRIPTION, NO_INFORMATION_AVAILABLE);
+
+                String image = sandwichJsonObj.optString(IMAGE);
+
+                JSONArray ingredientsJsonArray = sandwichJsonObj.optJSONArray(INGREDIENTS);
+                List<String> ingredients = convertInStringList(ingredientsJsonArray);
+
+                return new Sandwich(mainName, alsoKnownAs, placeOfOrigin, description, image, ingredients);
             } catch (JSONException e) {
-                Log.e(TAG, "Problem parsing the sandwich JSON results", e);
+                Log.e(TAG, ERROR_IN_PARSING_THE_SANDWICH_JSON_STRING, e);
             }
         }
         return null;
+    }
+
+    /**
+     *
+     * @param jsonArray
+     * @return
+     * @throws JSONException
+     */
+    private static List<String> convertInStringList(JSONArray jsonArray) throws JSONException {
+        List<String> resultList = new ArrayList<>();
+        if (!(jsonArray == null || jsonArray.length() == ZERO)) {
+            for (int i = START_INDEX; i < jsonArray.length(); i++) {
+                resultList.add(jsonArray.getString(i).trim());
+            }
+        }
+        return resultList;
     }
 }
