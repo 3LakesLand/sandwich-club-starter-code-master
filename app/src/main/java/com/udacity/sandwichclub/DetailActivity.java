@@ -27,7 +27,13 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- *
+ * The Class represents the Detailed Description of a Sandwich. The Class is called via an Intent
+ * that contains the clicked position from the Sandwich List. The Information to be displayed
+ * is extracted from a JSON string. In this information is also the URL of the Sandwich Image.
+ * Via an asynchronous Task, the Image is loaded and inserted into the Detailed Display.
+ * As long as the Image has not been loaded, a Progress Bar will be displayed.
+ * If no Image can be loaded, the Text "No picture is available" will be displayed instead
+ * of the Image.
  */
 public class DetailActivity extends AppCompatActivity {
 
@@ -54,22 +60,27 @@ public class DetailActivity extends AppCompatActivity {
     private Unbinder unbinder;
 
     /**
+     * The Method creates the surface layout, gets the pressed Sandwich Position out of the Intent,
+     * calls the Conversion of the JSON string into a Sandwich object and calls the Loading
+     * of the Sandwich pictures. The Sandwich Information is inserted into the Surface.
      *
-     * @param savedInstanceState
+     * @param savedInstanceState If non-null, this Activity is being re-constructed
+     *                           from a previous saved state as given here
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        //bind the ImageView, ProgressBar and the TextViews
         unbinder = ButterKnife.bind(this);
-
 
         Intent intent = getIntent();
         if (intent == null) {
             closeOnError();
         }
 
+        //get the clicked position from the Sandwich List.
         int position = intent.getIntExtra(EXTRA_POSITION, EXTRA_POSITION_NOT_FOUND_IN_INTENT);
         if (position == EXTRA_POSITION_NOT_FOUND_IN_INTENT) {
             closeOnError();
@@ -86,6 +97,7 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
+        //Loading of the Sandwich pictures
         new SandwichImageTask().execute(sandwich.getImage());
 
         origin_tv.setText(sandwich.getPlaceOfOrigin());
@@ -108,7 +120,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * If no Sandwich object could be created, the processing cancels with an info toast.
      */
     private void closeOnError() {
         finish();
@@ -117,10 +129,11 @@ public class DetailActivity extends AppCompatActivity {
 
 
     /**
-     *
+     * The Class loads an Image via the URL that is transmitted and stores it into the Surface.
+     * If no Image can be loaded, the Text "No picture is available" will be displayed instead.
+     * A Progress Bar is displayed while the Image Is being loaded.
      */
     public class SandwichImageTask extends AsyncTask<String, Void, Bitmap> {
-        private String TAG = SandwichImageTask.class.getSimpleName();
         private static final String NOT_SUCCESSFULLY_RECEIVED_RESPONSE_CODE =
                 "The request was mot successfully received. Response Code: ";
         private static final int OK = 200;
@@ -130,9 +143,10 @@ public class DetailActivity extends AppCompatActivity {
         private static final int FIRST_ELEMENT = 0;
         private static final int READ_TIMEOUT = 5000; /* milliseconds */
         private static final int CONNECT_TIMEOUT = 7000; /* milliseconds */
+        private String TAG = SandwichImageTask.class.getSimpleName();
 
         /**
-         *
+         * Before Loading the Picture we displayed the Process bar.
          */
         @Override
         protected void onPreExecute() {
@@ -142,9 +156,10 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         /**
+         * A correct URL Is created from the URL string. It is used to load the Bitmap of the Image.
          *
-         * @param params
-         * @return
+         * @param params contain the URL String
+         * @return the image bitmap or an error
          */
         @Override
         protected Bitmap doInBackground(String... params) {
@@ -153,23 +168,28 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         /**
+         * The Process bar is switched off. Depending on whether an Image Bitmap has been loaded,
+         * the Image will be displayed or the Text "No picture is available" will be issued.
          *
-         * @param bitmap
+         * @param bitmap of the image
          */
         @Override
         protected void onPostExecute(Bitmap bitmap) {
-            progressBar.setVisibility(View.GONE);
+            if (progressBar != null) {
+                progressBar.setVisibility(View.GONE);
+            }
             if (bitmap != null) {
                 image_iv.setImageBitmap(bitmap);
-            } else {
+            } else if (no_picture_tv != null) {
                 no_picture_tv.setVisibility(View.VISIBLE);
             }
         }
 
         /**
+         * A correct URL Is created from the URL string.
          *
-         * @param stringUrl
-         * @return
+         * @param stringUrl string of the url
+         * @return URL object or an error
          */
         private URL createUrl(String stringUrl) {
             URL url = null;
@@ -182,11 +202,12 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         /**
+         * The URL obejct is used to load the Bitmap of the Image.
          *
-         * @param url
-         * @return
+         * @param url URL object
+         * @return the Bitmap of the Image or an error (bitmap is null)
          */
-        private Bitmap makeHttpRequest(URL url)  {
+        private Bitmap makeHttpRequest(URL url) {
             Bitmap bitmap = null;
             if (url != null) {
                 HttpURLConnection connection = null;
