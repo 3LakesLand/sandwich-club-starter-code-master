@@ -12,6 +12,9 @@
 
     <!-- Error messages-->
     <string name="detail_error_message">Sandwich data not available</string>
+    <string name="no_picture_is_available">No picture is available</string>
+    <string name="sandwich_picture">sandwich picture</string>
+    <string name="also_known_tv_toolsText">croque-monsieur (French)</string>
 
     <string-array name="sandwich_names">
         <item>Ham and cheese sandwich</item>

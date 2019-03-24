@@ -8,4 +8,72 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="activity_main_listview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="activity_main_linearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="sandwich_picture_ImageView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/image_height</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="waiting_for_sandwich_picture_ProgressBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/progressBar_height</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="no_picture_TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/no_picture_TextView</item>
+        <item name="android:layout_marginStart">@dimen/no_picture_tv_marginStart</item>
+        <item name="android:layout_marginTop">@dimen/no_picture_tv_marginTop</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/no_picture_tv_textsize</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="also_known_as_label_TextView">
+        <item name="android:layout_width">@dimen/also_known_as_label_tv_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/also_known_as_label_tv_marginStart</item>
+        <item name="android:layout_marginTop">@dimen/also_known_as_label_tv_marginTop</item>
+        <item name="android:layout_marginEnd">@dimen/also_known_as_label_tv_marginEnd</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/also_known_as_label_tv_textsize</item>
+    </style>
+
+    <style name="also_known_TextView">
+        <item name="android:layout_width">@dimen/also_known_tv_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/also_known_tv_marginStart</item>
+        <item name="android:layout_marginTop">@dimen/also_known_tv_marginTop</item>
+        <item name="android:layout_marginEnd">@dimen/also_known_tv_marginEnd</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/also_known_tv_textSize</item>
+    </style>
+
+    <style name="origin_label_TextView">
+        <item name="android:layout_width">@dimen/origin_label_tv_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/origin_label_tv_marginStart</item>
+        <item name="android:layout_marginTop">@dimen/origin_label_tv_marginTop</item>
+        <item name="android:layout_marginEnd">@dimen/origin_label_tv_marginEnd</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/origin_label_tv_textSize</item>
+    </style>
+
 </resources>
